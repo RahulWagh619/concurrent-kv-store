@@ -1,20 +1,22 @@
 const express = require("express");
-const { spawn } = require("child_process");
+const { spawn } = require("child_process"); // Make sure this is destructured correctly
 const path = require("path");
 
 const app = express();
 app.use(express.json());
 
-// DETECT OPERATING SYSTEM: Run .exe on Windows, compiled .out binary on Linux cloud containers
+// 1. Detect the operating system platform
 const isWindows = process.platform === "win32";
 const binaryName = isWindows ? "server.exe" : "./server.out";
-const binaryPath = path.join;
+
+// 2. Build the absolute path string (Ensure it uses path.join correctly)
+const binaryPath = path.join(__dirname, "src", binaryName);
 
 console.log(
   `[System] Detected platform: ${process.platform}. Launching backend engine via: ${binaryName}`,
 );
 
-// Spawn the C++ database core as a persistent background child process
+// 3. Launch the process (binaryPath MUST be a string variable, not path.join itself)
 const cppEngine = spawn(binaryPath, [], {
   cwd: path.join(__dirname, "src"),
 });
