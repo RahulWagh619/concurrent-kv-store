@@ -1,0 +1,6 @@
+node_modules
+src/server.exe
+client.exe
+src/vertex_data.db
+.git
+.DS_Store
