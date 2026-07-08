@@ -20,12 +20,6 @@ A **high-performance, multi-threaded hybrid Key-Value Storage Engine** built fro
 
 https://concurrent-kv-store.onrender.com
 
-**Sample Request**
-
-```http
-GET https://concurrent-kv-store.onrender.com/get/cloud_test
-```
-
 You can interact with the API using:
 
 - Browser
