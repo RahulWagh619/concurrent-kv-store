@@ -1,5 +1,5 @@
 # Step 1: Use a lightweight, official Linux image with Node.js pre-installed
-FROM node:20-bullseye-slim
+FROM node:22-bullseye-slim
 
 # Step 2: Install the GNU C++ Compiler (g++) and build tools inside the Linux environment
 RUN apt-get update && apt-get install -y \
@@ -24,4 +24,4 @@ RUN g++ -std=c++17 -O3 src/server.cpp src/KVStore.cpp -o src/server.out -pthread
 EXPOSE 3000
 
 # Step 8: Define the boot command to run the application
-CMD ["node", "--experimental-websocket", "app.js"]
+CMD ["node", "app.js"]
