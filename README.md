@@ -5,8 +5,10 @@
 ![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
 ![Node.js](https://img.shields.io/badge/Node.js-Express-green)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+![Supabase](https://img.shields.io/badge/Supabase-Storage-green?logo=supabase)
 ![Thread Safe](https://img.shields.io/badge/Thread--Safe-Yes-success)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-orange)
+
 
 </p>
 
@@ -44,6 +46,118 @@ You can interact with the API using:
 - 🖥️ Cross-platform (Windows & Linux)
 
 ---
+
+## 📡 API Endpoints
+
+## 1️⃣ Set a Key-Value Pair
+
+**Endpoint**
+
+```http
+POST /set
+```
+
+**Headers**
+
+```text
+Content-Type: application/json
+```
+
+**Request Body**
+
+```json
+{
+  "key": "username",
+  "value": "sampr"
+}
+```
+
+**cURL**
+
+```bash
+curl -i -X POST https://concurrent-kv-store.onrender.com/set \
+  -H "Content-Type: application/json" \
+  -d "{\"key\":\"username\",\"value\":\"sampr\"}"
+```
+
+---
+
+## 2️⃣ Get a Value by Key
+
+**Endpoint**
+
+```http
+GET /get/:key
+```
+
+**Example**
+
+```http
+GET /get/username
+```
+
+**Example Response**
+
+```json
+{
+  "status": "success",
+  "data": "sampr"
+}
+```
+
+**cURL**
+
+```bash
+curl -i https://concurrent-kv-store.onrender.com/get/username
+```
+
+---
+
+## 3️⃣ Delete a Key
+
+**Endpoint**
+
+```http
+DELETE /del/:key
+```
+
+**Example**
+
+```http
+DELETE /del/username
+```
+
+**cURL**
+
+```bash
+curl -i -X DELETE https://concurrent-kv-store.onrender.com/del/username
+```
+
+---
+
+## 4️⃣ Save Snapshot & Cloud Backup
+
+**Endpoint**
+
+```http
+POST /save
+```
+
+**Description**
+
+Triggers the native C++ storage engine to:
+
+- Create a binary snapshot (`vertex_data.db`)
+- Persist all in-memory shards to disk
+- Automatically back up the snapshot asynchronously to **Supabase Cloud Storage**
+
+**cURL**
+
+```bash
+curl -i -X POST https://concurrent-kv-store.onrender.com/save
+```
+
+
 
 # 🏗️ System Architecture
 
@@ -142,60 +256,6 @@ vertex_data.db
 ### Client
 
 - C++ WinHTTP
-
----
-
-# 📡 API Endpoints
-
-## Write Data
-
-```http
-POST /set
-```
-
-Body
-
-```json
-{
-  "key": "user_101",
-  "value": "Alice"
-}
-```
-
----
-
-## Read Data
-
-```http
-GET /get/:key
-```
-
-Example Response
-
-```json
-{
-  "status": "success",
-  "data": "Alice"
-}
-```
-
----
-
-## Delete Data
-
-```http
-DELETE /del/:key
-```
-
----
-
-## Save Snapshot
-
-```http
-POST /save
-```
-
-Creates a binary snapshot of all memory shards.
 
 ---
 
