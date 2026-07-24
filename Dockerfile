@@ -1,5 +1,5 @@
 # Step 1: Use a lightweight, official Linux image with Node.js pre-installed
-FROM node:18-bullseye-slim
+FROM node:20-bullseye-slim
 
 # Step 2: Install the GNU C++ Compiler (g++) and build tools inside the Linux environment
 RUN apt-get update && apt-get install -y \
