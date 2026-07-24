@@ -4,3 +4,4 @@ client.exe
 src/vertex_data.db
 vertex_data.db
 .DS_Store
+.env
