@@ -24,4 +24,4 @@ RUN g++ -std=c++17 -O3 src/server.cpp src/KVStore.cpp -o src/server.out -pthread
 EXPOSE 3000
 
 # Step 8: Define the boot command to run the application
-CMD ["node", "app.js"]
+CMD ["node", "--experimental-websocket", "app.js"]
