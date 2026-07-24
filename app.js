@@ -185,7 +185,7 @@ async function startServer() {
     process.exit(0);
   });
 
-  const PORT = 3000;
+  const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`===================================================`);
     console.log(` Vertex Hybrid Distributed Engine Online           `);
